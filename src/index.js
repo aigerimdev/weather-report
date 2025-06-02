@@ -1,5 +1,5 @@
 // Update the city name in the header live when user types
-ocument.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     const cityNameInput = document.getElementById("cityNameInput");
     const headerCityName = document.getElementById("headerCityName");
 
