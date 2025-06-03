@@ -112,3 +112,10 @@ currentTempButton.addEventListener("click", () => {
         tempValue.textContent = "Error loading temperature";
     });
 });
+
+const cityNameReset = document.getElementById("cityNameReset");
+cityNameReset.addEventListener('click', () => {
+    const defaultCity = '';
+    cityNameInput.value = defaultCity;
+    headerCityName.textContent = defaultCity;
+});
