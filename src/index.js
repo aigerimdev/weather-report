@@ -65,3 +65,18 @@ document.addEventListener("DOMContentLoaded", () => {
   // Show initial temperature and landscape
   WeatherUI.updateTemperatureUI();
 });
+
+// Update sky display based on user selection from dropdown
+const skySelect = document.getElementById('skySelect');
+const sky = document.getElementById('sky');
+
+const skyOptions = {
+    sunny: '☁️ ☁️ ☁️ ☀️ ☁️ ☁️',
+    cloudy: '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️',
+    rainy: '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧',
+    snowy: '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨'
+}
+skySelect.addEventListener('change', () => {
+    const selectedSky = skySelect.value;
+    sky.textContent = skyOptions[selectedSky];
+});
