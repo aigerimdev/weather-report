@@ -1,47 +1,56 @@
 // Temperature & Landscape UI Module
-const WeatherUI = {
-    currentTemp: 70,
+let isFahrenheit = true;
 
-    updateTemperatureUI() {
+const convertToCelsius = (f) => Math.round((f - 32) * 5 / 9);
+
+const WeatherUI = {
+  currentTemp: 70, // always stored in Fahrenheit
+
+  updateTemperatureUI() {
     const tempDisplay = document.getElementById("tempValue");
     const landscapeImage = document.getElementById("landscapeImage");
     const caption = document.getElementById("landscapeCaption");
 
-    tempDisplay.textContent = `${this.currentTemp}°`;
+    // Determine what to show
+    const displayTemp = isFahrenheit ? this.currentTemp : convertToCelsius(this.currentTemp);
+    tempDisplay.textContent = `${displayTemp}°${isFahrenheit ? "F" : "C"}`;
     tempDisplay.className = "";
 
-    if (this.currentTemp >= 80) {
-        tempDisplay.classList.add("red");
-        landscapeImage.src = "assets/hot.png";
-        caption.textContent = "City landscape - very hot day.";
-    } else if (this.currentTemp >= 70) {
-        tempDisplay.classList.add("orange");
-        landscapeImage.src = "assets/warmer.png";
-        caption.textContent = "City landscape - sunny summer day.";
-    } else if (this.currentTemp >= 60) {
-        tempDisplay.classList.add("yellow");
-        landscapeImage.src = "assets/warm.png";
-        caption.textContent = "City landscape - blooming spring.";
-    } else if (this.currentTemp >= 30) {
-        tempDisplay.classList.add("teal");
-        landscapeImage.src = "assets/cool.png";
-        caption.textContent = "City landscape - rainy cool day.";
-    } else {
-        tempDisplay.classList.add("blue");
-        landscapeImage.src = "assets/cold.png";
-        caption.textContent = "City landscape - cold snowy day.";
-    }
-    },
+    // Choose range thresholds based on current unit
+    let tempForRange = isFahrenheit ? this.currentTemp : convertToCelsius(this.currentTemp);
 
-    increaseTemp() {
+    if ((isFahrenheit && tempForRange >= 80) || (!isFahrenheit && tempForRange >= 27)) {
+      tempDisplay.classList.add("red");
+      landscapeImage.src = "assets/hot.png";
+      caption.textContent = "City landscape - very hot day.";
+    } else if ((isFahrenheit && tempForRange >= 70) || (!isFahrenheit && tempForRange >= 21)) {
+      tempDisplay.classList.add("orange");
+      landscapeImage.src = "assets/warmer.png";
+      caption.textContent = "City landscape - sunny summer day.";
+    } else if ((isFahrenheit && tempForRange >= 60) || (!isFahrenheit && tempForRange >= 15)) {
+      tempDisplay.classList.add("yellow");
+      landscapeImage.src = "assets/warm.png";
+      caption.textContent = "City landscape - blooming spring.";
+    } else if ((isFahrenheit && tempForRange >= 30) || (!isFahrenheit && tempForRange >= 0)) {
+      tempDisplay.classList.add("teal");
+      landscapeImage.src = "assets/cool.png";
+      caption.textContent = "City landscape - rainy cool day.";
+    } else {
+      tempDisplay.classList.add("blue");
+      landscapeImage.src = "assets/cold.png";
+      caption.textContent = "City landscape - cold snowy day.";
+    }
+  },
+
+  increaseTemp() {
     this.currentTemp += 1;
     this.updateTemperatureUI();
-    },
+  },
 
-    decreaseTemp() {
-        this.currentTemp -= 1;
-        this.updateTemperatureUI();
-    }
+  decreaseTemp() {
+    this.currentTemp -= 1;
+    this.updateTemperatureUI();
+  }
 };
 
 // Update the city name in the header live when user types
@@ -118,4 +127,9 @@ cityNameReset.addEventListener('click', () => {
     const defaultCity = '';
     cityNameInput.value = defaultCity;
     headerCityName.textContent = defaultCity;
+});
+
+document.getElementById("unitToggle").addEventListener("change", (event) => {
+  isFahrenheit = !event.target.checked; // Assuming toggle: checked = Celsius
+  WeatherUI.updateTemperatureUI();
 });

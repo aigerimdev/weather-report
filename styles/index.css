@@ -50,15 +50,15 @@ grid-row: 2;
 }
 
 .temperature__section button {
-    background-color: #1b69f9;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 10px
+background-color: #1b69f9;
+border: none;
+color: white;
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+border-radius: 10px
 }
 
 .sky__section {
@@ -190,4 +190,70 @@ background-color: lightblue;
 
 .snowy {
 background-color: lightsteelblue;
+}
+
+.unit-toggle {
+display: flex;
+justify-content: flex-start;
+margin-bottom: 1rem;
+}
+
+.toggle-label {
+position: relative;
+display: inline-block;
+width: 80px;
+height: 36px;
+background-color: #e0e0e0;
+border-radius: 20px;
+cursor: pointer;
+font-size: 0.9rem;
+font-weight: bold;
+user-select: none;
+transition: background-color 0.3s;
+}
+
+.toggle-label .toggle-slider {
+position: absolute;
+width: 40px;
+height: 36px;
+background-color: #1b69f9;
+border-radius: 20px;
+top: 0;
+left: 0;
+transition: left 0.3s ease-in-out;
+}
+
+#unitToggle {
+display: none;
+}
+
+.toggle-label .label-c,
+.toggle-label .label-f {
+position: absolute;
+width: 40px;
+text-align: center;
+line-height: 36px;
+color: white;
+}
+
+.toggle-label .label-c {
+left: 0;
+color: white;
+}
+
+.toggle-label .label-f {
+right: 0;
+color: #1b69f9;
+}
+
+#unitToggle:checked + .toggle-label .toggle-slider {
+left: 40px;
+}
+
+#unitToggle:checked + .toggle-label .label-c {
+color: #1b69f9;
+}
+
+#unitToggle:checked + .toggle-label .label-f {
+color: white;
 }
