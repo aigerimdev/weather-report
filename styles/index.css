@@ -12,10 +12,10 @@ font-family: "Rubik", sans-serif;
 font-size: 18px;
 margin: 2rem;
 
-background-image: url("../assets/cloudy-background.jpg");
+background-image: url("../assets/blue-background.png");
 background-size: cover;
 background-repeat: no-repeat;
-background-position: top;
+background-position: bottom;
 background-attachment: fixed;
 }
 
@@ -99,8 +99,7 @@ justify-content: space-around;
 #tempValue {
 font-size: 3rem;
 margin-left: 1.5rem;
-/* padding-right: 1rem; */
-/* margin-right: 1.5rem; */
+margin-right: 1.5rem;
 }
 
 .temperature__controls {
@@ -141,7 +140,7 @@ font-size: 2em;
 
 #landscapeImage {
 width: 100%;
-max-width: 400px;
+max-width: 800px;
 height: auto;
 display: block;
 margin: 0 auto;
