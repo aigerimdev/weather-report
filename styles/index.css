@@ -96,6 +96,18 @@ flex-direction: column;
 align-items: center;
 }
 
+.temp-control-img {
+width: 32px;
+height: 32px;
+cursor: pointer;
+margin: 5px 0;
+transition: transform 0.2s;
+}
+
+.temp-control-img:hover {
+transform: scale(1.15);
+}
+
 .garden__section > h2 {
 color: white;
 }
