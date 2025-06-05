@@ -124,7 +124,6 @@ color: white;
 min-height: 200px;
 max-width: fit-content;
 margin: auto;
-padding: 2rem;
 
 display: flex;
 flex-direction: column;
@@ -280,7 +279,9 @@ color: white;
 
 .layout-container {
 display: flex;
-gap: 2rem;
+justify-content: center;      /* Center entire content horizontally */
+align-items: flex-start;      /* Align top of panels */
+gap: 3rem;
 align-items: flex-start;
 justify-content: space-between;
 flex-wrap: wrap;
