@@ -1,17 +1,16 @@
 h2 {
     margin: 0 auto 2rem auto;
 }
-  
-body {
-display: grid;
-grid-template-columns: 1fr 2fr;
-grid-template-rows: auto auto auto auto;
-grid-gap: 1rem;
 
+body {
 font-family: "Rubik", sans-serif;
 font-size: 18px;
-background-color: #1b69f9;
 margin: 2rem;
+background-image: url("../assets/cloudy-background.jpg");
+background-size: cover;
+background-repeat: no-repeat;
+background-position: top;
+background-attachment: fixed;
 }
 
 .header__header {
@@ -27,14 +26,22 @@ margin-right: 2rem;
 font-size: 3em;
 }
 
+.header__subtitle {
+font-style: italic;
+font-size: 2rem; 
+}
+
 .header__city-name {
-font-style: oblique;
-font-size: 2rem;
+font-style: normal;
+font-size: 3rem;
+position: relative;
 }
 
 .header__city-name::before,
 .header__city-name::after {
-content: "✨";
+content: " ⚪ ⚪ ⚪ ";
+font-size: 18px;
+margin: 0 0.5rem;
 }
 
 .temperature__section,
@@ -50,15 +57,15 @@ grid-row: 2;
 }
 
 .temperature__section button {
-    background-color: #1b69f9;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 10px
+background-color: hsl(195, 80%, 49%);
+border: none;
+color: white;
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+border-radius: 10px
 }
 
 .sky__section {
@@ -96,6 +103,18 @@ margin-left: 1.5rem;
 display: flex;
 flex-direction: column;
 align-items: center;
+}
+
+.temp-control-img {
+width: 32px;
+height: 32px;
+cursor: pointer;
+margin: 5px 0;
+transition: transform 0.2s;
+}
+
+.temp-control-img:hover {
+transform: scale(1.15);
 }
 
 .garden__section > h2 {
@@ -143,7 +162,7 @@ overflow: hidden;
 
 .city-name__reset-btn {
 border: 0;
-background-color: #1655cc;
+background-color: hsl(195, 80%, 49%);
 color: white;
 border-radius: 8px;
 padding: 1rem;
@@ -212,4 +231,108 @@ color: white;
 }
 #toggleTempUnit{
 margin-top: 0;
+}
+.unit-toggle {
+display: flex;
+justify-content: flex-start;
+margin-bottom: 1rem;
+}
+
+.toggle-label {
+position: relative;
+display: inline-block;
+width: 80px;
+height: 36px;
+background-color: #e0e0e0;
+border-radius: 20px;
+cursor: pointer;
+font-size: 0.9rem;
+font-weight: bold;
+user-select: none;
+transition: background-color 0.3s;
+}
+
+.toggle-label .toggle-slider {
+position: absolute;
+width: 40px;
+height: 36px;
+background-color: hsl(195, 80%, 49%);
+border-radius: 20px;
+top: 0;
+left: 0;
+transition: left 0.3s ease-in-out;
+}
+
+#unitToggle {
+display: none;
+}
+
+.toggle-label .label-c,
+.toggle-label .label-f {
+position: absolute;
+width: 40px;
+text-align: center;
+line-height: 36px;
+color: white;
+}
+
+.toggle-label .label-c {
+left: 0;
+color: white;
+}
+
+.toggle-label .label-f {
+right: 0;
+color: hsl(195, 80%, 49%);
+}
+
+#unitToggle:checked + .toggle-label .toggle-slider {
+left: 40px;
+}
+
+#unitToggle:checked + .toggle-label .label-c {
+color: hsl(195, 80%, 49%);
+}
+
+#unitToggle:checked + .toggle-label .label-f {
+color: white;
+}
+
+
+
+section:not(.garden__section) {
+background-color: white;
+border-radius: 10px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+padding: 20px;
+margin: 20px auto;
+width: 90%;
+max-width: 500px;
+}
+
+.layout-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.left-panel,
+.right-panel {
+  flex: 1 1 400px; /* grow, shrink, base width */
+  max-width: 500px;
+}
+
+@media (max-width: 768px) {
+  .layout-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left-panel,
+  .right-panel {
+    width: 90%;
+    max-width: none;
+  }
 }
