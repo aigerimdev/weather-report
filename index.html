@@ -19,54 +19,61 @@
             <span id="headerCityName" class="header__city-name"></span>
         </span>
     </header>
-    <section class="temperature__section">
-        <h2>Temperature</h2>
-        <!--TOGGLE -->
-        <div class="unit-toggle">
-            <input type="checkbox" id="unitToggle" />
-            <label for="unitToggle" class="toggle-label">
-            <span class="label-c">°C</span>
-            <span class="label-f">°F</span>
-            <span class="toggle-slider"></span>
-            </label>
-        </div>
+    <div class="layout-container">
+        <div class="left-panel">
+            <!-- temperature, sky, city sections -->
+            <section class="temperature__section">
+                <h2>Temperature</h2>
+                <!--TOGGLE -->
+                <div class="unit-toggle">
+                    <input type="checkbox" id="unitToggle" />
+                    <label for="unitToggle" class="toggle-label">
+                    <span class="label-c">°C</span>
+                    <span class="label-f">°F</span>
+                    <span class="toggle-slider"></span>
+                    </label>
+                </div>
 
-        <div class="temperature__content">
-            <div class="temperature__controls">
-                <img id="increaseTempControl" src="assets/plus.png" alt="Increase temperature" class="temp-control-img" />
-                <span id="tempValue"></span>
-                <img id="decreaseTempControl" src="assets/minus.png" alt="Decrease temperature" class="temp-control-img" />
-            </div>
-            <button id="currentTempButton">Get Realtime Temperature</button>
-        </div>
-    </section>
-    <section class="sky__section">
-        <h2>Sky</h2>
-        <select id="skySelect">
-            <option value="sunny">Sunny</option>
-            <option value="cloudy">Cloudy</option>
-            <option value="rainy">Rainy</option>
-            <option value="snowy">Snowy</option>
-            <!-- sky options here -->
-        </select>
-    </section>
+                <div class="temperature__content">
+                    <div class="temperature__controls">
+                        <img id="increaseTempControl" src="assets/plus.png" alt="Increase temperature" class="temp-control-img" />
+                        <span id="tempValue"></span>
+                        <img id="decreaseTempControl" src="assets/minus.png" alt="Decrease temperature" class="temp-control-img" />
+                    </div>
+                    <button id="currentTempButton">Get Realtime Temperature</button>
+                </div>
+            </section>
+            <section class="sky__section">
+                <h2>Sky</h2>
+                <select id="skySelect">
+                    <option value="sunny">Sunny</option>
+                    <option value="cloudy">Cloudy</option>
+                    <option value="rainy">Rainy</option>
+                    <option value="snowy">Snowy</option>
+                    <!-- sky options here -->
+                </select>
+            </section>
 
-    <section class="city-name__section">
-        <h2>City Name</h2>
-        <input type="text" id="cityNameInput">
-        <button id="cityNameReset" class="city-name__reset-btn">Reset</button>
-    </section>
-
-    <section class="garden__section">
-        <h2>Weather Garden</h2>
-        <div id="gardenContent" class="garden__content">
-            <div id="sky"></div>
-            <figure id="landscape">
-                <img id="landscapeImage" alt="Landscape showing current weather" />
-                <figcaption id="landscapeCaption" class="visually-hidden">Weather landscape</figcaption>
-            </figure>
+            <section class="city-name__section">
+                <h2>City Name</h2>
+                <input type="text" id="cityNameInput">
+                <button id="cityNameReset" class="city-name__reset-btn">Reset</button>
+            </section>
         </div>
-    </section>
+        <div class="right-panel">
+            <!-- Weather Garden -->
+                <section class="garden__section">
+                    <h2>Weather Garden</h2>
+                    <div id="gardenContent" class="garden__content">
+                        <div id="sky"></div>
+                        <figure id="landscape">
+                            <img id="landscapeImage" alt="Landscape showing current weather" />
+                            <figcaption id="landscapeCaption" class="visually-hidden">Weather landscape</figcaption>
+                        </figure>
+                    </div>
+            </section>
+        </div>
+    </div>
     
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./src/index.js"></script>

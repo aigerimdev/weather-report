@@ -3,11 +3,6 @@ h2 {
 }
 
 body {
-display: grid;
-grid-template-columns: 1fr 2fr;
-grid-template-rows: auto auto auto auto;
-gap: 1rem;
-
 font-family: "Rubik", sans-serif;
 font-size: 18px;
 margin: 2rem;
@@ -18,6 +13,7 @@ background-repeat: no-repeat;
 background-position: bottom;
 background-attachment: fixed;
 }
+
 
 .header__header {
 color: white;
@@ -83,8 +79,8 @@ grid-row: 4;
 }
 
 .garden__section {
-grid-row: 2 / span 3;
-grid-column: 2;
+/* grid-row: 2 / span 3;
+grid-column: 2; */
 text-align: center;
 align-self: center;
 }
@@ -280,4 +276,69 @@ color: hsl(195, 80%, 49%);
 
 #unitToggle:checked + .toggle-label .label-f {
 color: white;
+}
+
+.layout-container {
+display: flex;
+gap: 2rem;
+align-items: flex-start;
+justify-content: space-between;
+flex-wrap: wrap;
+}
+
+.left-panel {
+flex: 1;
+min-width: 300px;
+max-width: 500px;
+}
+
+.right-panel {
+flex: 2;
+min-width: 300px;
+}
+
+/* Responsive layout for mobile */
+@media (max-width: 768px) {
+.layout-container {
+flex-direction: column;
+align-items: center;
+}
+
+.left-panel,
+.right-panel {
+width: 90%;
+max-width: 500px;
+}
+}
+
+.temperature__section,
+.sky__section,
+.city-name__section {
+border-radius: 8px;
+padding: 2rem;
+background-color: white;
+margin-bottom: 1.5rem; 
+}
+/* Responsive header for mobile */
+@media (max-width: 768px) {
+.header__header {
+flex-direction: column;
+align-items: center;
+text-align: left;
+gap: 0.5rem;
+}
+
+.header__header > h1 {
+font-size: 2.2rem;
+margin: 0;
+}
+
+.header__subtitle {
+font-size: 1.3rem;
+line-height: 1.4;
+}
+
+.header__city-name {
+font-size: 2rem;
+}
 }
