@@ -119,11 +119,18 @@ currentTempButton.addEventListener("click", () => {
         });
     })
     .then((weatherRes) => {
+<<<<<<< HEAD
       const kelvin = weatherRes.data.main.temp;
       const fahrenheit = Math.round((kelvin - 273.15) * 9 / 5 + 32);
 
       WeatherUI.currentTemp = fahrenheit;
       WeatherUI.updateTemperatureUI();
+=======
+        const kelvin = weatherRes.data.main.temp;
+        const fahrenheit = ((kelvin - 273.15) * 9 / 5 + 32).toFixed(1);
+        WeatherUI.currentTemp = parseFloat(fahrenheit); // update internal state
+        WeatherUI.updateTemperatureUI(); 
+>>>>>>> 71e089b981e11a11588fb748cffba0a6574653fd
     })
 
     .catch((error) => {
