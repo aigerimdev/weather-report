@@ -96,7 +96,14 @@ const tempValue = document.getElementById("tempValue");
 const headerCityName = document.getElementById("headerCityName");
 
 currentTempButton.addEventListener("click", () => {
-    const city = headerCityName.textContent;
+    const city = headerCityName.textContent.trim();
+
+    if (!city) {
+    console.warn("City name is empty. Please enter a city.");
+    tempValue.textContent = "Enter a city first.";
+    tempValue.className = "";
+    return;
+}
 
     // Step 1: Get lat/lon using LocationIQ via proxy
     axios.get("http://localhost:5000/location", {
@@ -112,13 +119,17 @@ currentTempButton.addEventListener("click", () => {
         });
     })
     .then((weatherRes) => {
-        const kelvin = weatherRes.data.main.temp;
-        const fahrenheit = ((kelvin - 273.15) * 9 / 5 + 32).toFixed(1);
-        tempValue.textContent = `${fahrenheit}°F`;
+      const kelvin = weatherRes.data.main.temp;
+      const fahrenheit = Math.round((kelvin - 273.15) * 9 / 5 + 32);
+
+      WeatherUI.currentTemp = fahrenheit;
+      WeatherUI.updateTemperatureUI();
     })
+
     .catch((error) => {
         console.error("Error getting temperature:", error);
         tempValue.textContent = "Error loading temperature";
+        tempValue.className = "";  // clear color when error occurs
     });
 });
 

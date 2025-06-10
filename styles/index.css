@@ -92,11 +92,6 @@ justify-content: space-around;
 /* justify-content: center; */
 }
 
-/* #tempValue {
-font-size: 3rem;
-margin-left: 1.5rem;
-margin-right: 1.5rem;
-} */
 #tempValue {
 display: block;
 width: 150px;
@@ -104,7 +99,6 @@ min-height: 3rem;
 font-size: 3rem;
 text-align: center;
 word-break: break-word;
-color: orange;
 margin: 0 auto;
 }
 
